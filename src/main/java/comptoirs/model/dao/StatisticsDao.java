@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 @Stateless
 public class StatisticsDao {
-	@PersistenceContext(unitName = "comptoirs")
+	@PersistenceContext(unitName = "skisisDB")
 	private EntityManager em;
 
 	public List unitesVenduesParCategorie() {

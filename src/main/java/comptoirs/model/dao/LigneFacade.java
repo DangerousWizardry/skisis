@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class LigneFacade extends AbstractFacade<Ligne> {
 
-	@PersistenceContext(unitName = "comptoirs")
+	@PersistenceContext(unitName = "skisisDB")
 	private EntityManager em;
 
 	@Override

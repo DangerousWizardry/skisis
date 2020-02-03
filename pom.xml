@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>isis</groupId>
-	<artifactId>skisis</artifactId>
+	<artifactId>Skisis</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 
