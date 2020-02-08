@@ -1,0 +1,164 @@
+		body{
+			margin: 0;
+			font-family: 'Roboto Condensed', cursive;
+		}
+		nav{
+			background: transparent;
+			height: 50px;
+			display: grid;
+			grid-template-columns: 15% 25% 25% 25% 10%;
+			padding: 10px 5%;
+			font-family: 'Roboto Condensed', cursive;
+			font-weight: bold;
+			font-size: 30px;
+			color: #fff;
+		}
+		nav > .logo{
+			font-family: 'Righteous', cursive;
+			font-size: 30px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		nav > .logo > img{
+			width: 80px;
+			margin-right: 10px;
+		}
+		nav > div{
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+		}
+		nav > div > a{
+			display: inline-block;
+			padding: 5px 10px;
+			transition: all 0.5s;
+			color: #fff;
+			text-decoration: none;
+		}
+		nav > div > a:hover{
+			animation: textshadow 0.6s both;
+		}
+		.actions{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+		.intro{
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: #fff;
+			font-size: 40px;
+		}
+		.intro > video{
+			top: -80px;
+			position: absolute;
+			left: 0;
+			z-index: -1;
+		}
+		.intro > .title{
+			padding-bottom: 80px;
+		}
+
+		.separator{
+			height: 90px;
+			font-family: 'Roboto Condensed', cursive;
+			font-weight: bold;
+			font-size: 30px;
+			text-align: center;
+			padding-top: 45px;
+			background-size: cover;
+			background-position: bottom;
+			text-transform: uppercase;
+			overflow-y: none;
+		}
+		.separator > span{
+			color: #fff;
+			padding: 8px 15px;
+			background-color:#26627c;
+		}
+		footer{
+			height: 40px;
+			background-size: cover;
+			background-position: bottom;
+			text-align: center;
+			padding-top: 20px;
+			color:#fff;
+			font-weight: bold;
+			background-color:#26627c;
+		}
+		.container{
+			padding:50px 100px;
+			height: 80vh;
+			background: url("mountain.jpg");
+			background-size: cover;
+			background-position: bottom;
+			margin-top:-5px;
+		}
+		.hot{
+			background: url("hot.jpg");
+			background-size: cover;
+			background-position: bottom;
+		}
+		.grid{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+		.categorie{
+			width: 350px;
+			height: 90px;
+			margin: 10px 20px;
+			padding: 60px 0px 10px 0px;
+			background: url("hot.jpg");
+			background-size: cover;
+			background-position: center;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 25px;
+			color: #fff;
+			transition: all 0.5s;
+			font-weight: bolder;
+			font-family: 'Roboto', cursive;
+			cursor: pointer;
+		}
+		.categorie:hover{
+			filter: none;
+			transform: scale(1.02);
+		}
+		.categorie > span{
+			text-transform: uppercase;
+						color: #fff;
+			background-color:#26627c;
+			padding: 8px 15px;
+		}
+		.child{
+			background-image: url("bg_child.jpg");
+		}
+		.ski{
+			background-image: url("bg_ski.jpg");
+		}
+		.snowboard{
+			background-image: url("bg_snowboard.jpg");
+		}
+		.accessoires{
+			background-image: url("bg_accessoires.jpg");
+		}
+		@keyframes textshadow {
+		  0% {
+		    text-shadow: 0 0 0 rgba(255,255,255, 0);
+		  }
+		  100% {
+		    text-shadow: 0 0 30px rgba(255,255,255, 0.55);
+		    transform: scale(1.1);
+
+		  }
+		}
