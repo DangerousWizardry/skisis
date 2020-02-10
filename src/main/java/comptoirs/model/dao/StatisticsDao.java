@@ -15,5 +15,11 @@ public class StatisticsDao {
 		Query query = em.createNamedQuery("Categorie.unitesVendues");
 		List results = query.getResultList();
 		return results;
-	}	
+	}
+        
+        public List chiffreAffaireCategorieParDate(){
+            Query query = em.createNamedQuery("Categorie.chiffreAffaire");
+            List results = query.getResultList();
+            return results;
+        }
 }

@@ -32,4 +32,9 @@ public class StatController {
 	public void show() {
 		models.put("statistiques", dao.unitesVenduesParCategorie());
 	}
+        
+        @GET
+        public void chiffreAffaireCategorieParDate(){
+            models.put("chiffre d'affaires par artcles", dao.chiffreAffaireCategorieParDate());
+        }
 }
