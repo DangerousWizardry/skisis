@@ -9,8 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
-<body>
-<nav><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="#" class="navigation">Accueil</a></div><div><a href="#" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
+<body class="mainpage">
+<nav class="mainpage"><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="${pageContext.request.contextPath}/app" class="navigation">Accueil</a></div><div><a href="${pageContext.request.contextPath}/app/categories" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
 <div class="intro">
 	<video autoplay muted loop id="myVideo">
 	  <source src="assets/main_video.mp4" type="video/mp4">
@@ -21,7 +21,7 @@
 	<div class="separator"><span>Nos produits<span></div>
 	<div class="grid">
 		<c:forEach items="${categories}" var="item">
-			<div class="categorie ${item.getLibelle()}"><span>${item.getLibelle()}</span></div><br>
+			<a href="${pageContext.request.contextPath}/app/categorieProduits?code=${item.getCode()}"><div class="categorie ${item.getLibelle()}"><span>${item.getLibelle()}</span></div></a>
 		</c:forEach>
 		<!--
 		<div class="categorie snowboard"><span>Snowboard</span></div>

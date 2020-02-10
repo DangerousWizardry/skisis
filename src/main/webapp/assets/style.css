@@ -2,9 +2,20 @@
 			margin: 0;
 			font-family: 'Roboto Condensed', cursive;
 		}
+		body:not(.mainpage){
+			background: url("mountain.jpg");
+			background-size: cover;
+			background-position: bottom;
+			background-attachment: fixed;
+			padding-bottom: 100px;
+		}
+		h2{
+			color: #fff;
+			text-align: center;
+			margin: 30px;
+		}
 		nav{
-			background: transparent;
-			height: 50px;
+			height: 80px;
 			display: grid;
 			grid-template-columns: 15% 25% 25% 25% 10%;
 			padding: 10px 5%;
@@ -12,6 +23,11 @@
 			font-weight: bold;
 			font-size: 30px;
 			color: #fff;
+			background: #26627c;
+		}
+		nav.mainpage{
+			height: 50px;
+			background: transparent;
 		}
 		nav > .logo{
 			font-family: 'Righteous', cursive;
@@ -161,4 +177,39 @@
 		    transform: scale(1.1);
 
 		  }
+		}
+		.content{
+			margin: auto;
+			width: 80vw;
+			background-color: rgba(255,255,255, 0.95);
+		}
+		.productList{
+			display: flex;
+			flex-direction: column;
+		}
+		.productLine{
+			display: grid;
+			grid-template-columns: 10% 80% 10%;
+			height: 100px;
+		}
+		.productLine > div{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.light{
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+			background-color: #0F3;
+		}
+		.light.red{
+			background-color: #F03;
+		}
+		.categorieLine{
+			display: grid;
+			grid-template-columns: 10% 20% 70%;
+			height: 100px;
+			margin-bottom: 1px solid grey;
+			text-align: center;
 		}

@@ -4,52 +4,27 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Produits dans la catégorie '${selected.libelle}'</title>
-	</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Produits dans la catégorie '${selected.libelle}'</title>
+	<link rel="stylesheet" type="text/css" href="../assets/style.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav><div class="logo"><img src="../assets/ski.png">SKISIS</div><div><a href="${pageContext.request.contextPath}/app" class="navigation">Accueil</a></div><div><a href="${pageContext.request.contextPath}/app/categories" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
 
-	<body>
-		<h3>Choisissez la catégorie à afficher</h3>
-		<form> 	<%-- L'action par défaut est de revenir à l'URL du contrôleur --%>
-			<%-- Une liste de choix pour le paramètre 'code' --%>
-			<select name='code' onchange='this.form.submit()'>
-				<%-- On parcourt la liste des catégories en mettant une option pour chaque catégorie --%>
-				<c:forEach var="categorie" items="${categories}">
-					<%-- la valeur de l'option c'est le code de la catégorie --%>
-					<option value='${categorie.code}' 
-						<%--On détermine quelle et l'option sélectionnée dans la liste --%>
-						<c:if test="${categorie.code eq selected.code}">
-							selected
-						</c:if>
-					> <%-- le texte affiché pour l'opton c'est le libellé de la catégorie --%>
-						${categorie.libelle}
-					</option>
-				</c:forEach>
-			</select>
-			<input type='submit'>
-		</form>
-		<h2>Produits dans la catégorie '${selected.libelle}'</h2>
-		<%-- On montre la liste des produits dans la catégorie sélectionnée sous la forme d'une table HTML --%>		
-		<table border='1'>
-			<tr><th>Référence</th><th>Nom</th><th>Disponible ?</th></tr>
-			<%-- Est-ce qu'il y a des produits dans la catégorie sélectionnée ? --%>
-			<c:if test="${empty selected.produitCollection}">
-				<tr><td colspan="3">aucun produit dans cette catégorie</td></tr>	
-			</c:if>
-			<%-- Une ligne dans la table pour chaque produit --%>				
+	<h2>Nos produits ${selected.libelle}</h2>
+	<div class="content">
+		<div class="productList">
 			<c:forEach var="produit" items="${selected.produitCollection}">
-				<tr>
-					<td>${produit.reference}</td>
-					<td>${produit.nom}</td>
-					<td>
-						<input type="checkbox"
-						       <c:if test="${produit.indisponible eq 0}">checked</c:if>
-						>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<hr>
-		<a href="${pageContext.request.contextPath}">Retour au menu</a>
+			<div class="productLine">
+				<div>${produit.reference}</div>
+				<div>${produit.nom}</div>
+				<div><div class="light <c:if test="${produit.indisponible eq 1}">red</c:if>"></div></div>
+			</div>
+		</c:forEach>
+	</div>
+</div>
+</body>
 </html>

@@ -1,26 +1,30 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
 <html>
 
 <head>
-	<title>Affiche toutes les catégories</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Produits dans la catégorie '${selected.libelle}'</title>
+	<link rel="stylesheet" type="text/css" href="../assets/style.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
-
 <body>
-	<h1>Liste des catégories</h1>
-	<table border='1'>
-		<tr><th>Code</th><th>Libellé</th><th>Description</th></tr>
-		<%-- Pour chaque catégorie, une ligne dans la table HTML --%>
+	<nav><div class="logo"><img src="../assets/ski.png">SKISIS</div><div><a href="${pageContext.request.contextPath}/app" class="navigation">Accueil</a></div><div><a href="${pageContext.request.contextPath}/app/categories" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
+	
+	<h2>Nos catégories de produit</h2>
+	<div class="content">
+		<div class="productList">
 		<c:forEach var="categorie" items="${categories}">
-			<tr>
-				<td>${categorie.code}</td>
-				<%-- Le libellé ou la description peuvent contenir des caractères spéciaux HTML ! --%>
-				<td>${mvc.encoders.html(categorie.libelle)}</td>
-				<td>${mvc.encoders.html(categorie.description)}</td>
-			</tr>
+		<a href="app/categorieProduits?code=${categorie.getCode()}"><div class="categorieLine">
+				<div>${categorie.code}</div>
+				<div>${mvc.encoders.html(categorie.libelle)}</div>
+				<div>${mvc.encoders.html(categorie.description)}</div>
+			</div></a>
 		</c:forEach>
-	</table>
-	<a href="${pageContext.request.contextPath}">Retour au menu</a>
+	</div>
+</div>
 </body>
-
 </html>
