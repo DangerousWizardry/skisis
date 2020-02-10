@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>isis</groupId>
-	<artifactId>Skisis</artifactId>
+	<artifactId>skisis</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 
@@ -87,7 +87,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>SkisisDB</finalName>
+		<finalName>Comptoirs_MVC</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

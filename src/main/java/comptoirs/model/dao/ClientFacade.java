@@ -12,12 +12,12 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author rbastidee
+ * @author rbastide
  */
 @Stateless
 public class ClientFacade extends AbstractFacade<Client> {
 
-	@PersistenceContext(unitName = "skisisDB")
+	@PersistenceContext(unitName = "comptoirs")
 	private EntityManager em;
 
 	@Override

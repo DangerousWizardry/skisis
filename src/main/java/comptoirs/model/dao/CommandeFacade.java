@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class CommandeFacade extends AbstractFacade<Commande> {
 
-	@PersistenceContext(unitName = "skisisDB")
+	@PersistenceContext(unitName = "comptoirs")
 	private EntityManager em;
 
 	@Override

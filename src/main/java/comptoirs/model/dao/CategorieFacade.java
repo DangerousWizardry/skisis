@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class CategorieFacade extends AbstractFacade<Categorie> {
 
-	@PersistenceContext(unitName = "skisisDB")
+	@PersistenceContext(unitName = "comptoirs")
 	private EntityManager em;
 
 	@Override

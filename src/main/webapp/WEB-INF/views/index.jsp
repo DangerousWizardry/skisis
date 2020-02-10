@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="#" class="navigation">Accueil</a></div><div><a href="#" class="navigation">CatÃ©gorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
+<nav><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="#" class="navigation">Accueil</a></div><div><a href="#" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
 <div class="intro">
 	<video autoplay muted loop id="myVideo">
 	  <source src="assets/main_video.mp4" type="video/mp4">
@@ -20,14 +20,17 @@
 <div class="container">
 	<div class="separator"><span>Nos produits<span></div>
 	<div class="grid">
-		<div class="categorie ski"><span>Ski</span></div>
+		<c:forEach items="${categories}" var="item">
+			<div class="categorie ${item.getLibelle()}"><span>${item.getLibelle()}</span></div><br>
+		</c:forEach>
+		<!--
 		<div class="categorie snowboard"><span>Snowboard</span></div>
 		<div class="categorie accessoires"><span>Accessoires</span></div>
 		<div class="categorie child"><span>Enfant</span></div>
-		<div class="categorie promo"><span>Promo</span></div>
+		<div class="categorie promo"><span>Promo</span></div>-->
 	</div>
 </div>
-<footer>&copy; SKISIS Corporation - ClÃ©mence B, Lucas D, Victoria V</footer>
+<footer>&copy; SKISIS Corporation - Clémence B, Lucas D, Victoria V</footer>
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   crossorigin="anonymous"></script>

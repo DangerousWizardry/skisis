@@ -5,6 +5,7 @@
  */
 package controller;
 
+import comptoirs.model.dao.CategorieFacade;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
@@ -16,16 +17,20 @@ import javax.ws.rs.Path;
  *
  * @author Admin
  */
-@Controller
+
+	@Controller
 @Path("")
 @View("index.jsp")
 public class IndexController {
+	@Inject
+	CategorieFacade cFacade;
 	
 	@Inject
-	Models models;
-
+	Models model;
+	
 	@GET
 	public void show() {
-		
+		model.put("categories", cFacade.findAll());
 	}
+
 }
