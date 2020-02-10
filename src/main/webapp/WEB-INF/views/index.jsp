@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 	<title>Skisis</title>
@@ -9,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="#" class="navigation">Accueil</a></div><div><a href="#" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
+<nav><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="#" class="navigation">Accueil</a></div><div><a href="#" class="navigation">CatÃ©gorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
 <div class="intro">
 	<video autoplay muted loop id="myVideo">
 	  <source src="assets/main_video.mp4" type="video/mp4">
@@ -26,7 +27,7 @@
 		<div class="categorie promo"><span>Promo</span></div>
 	</div>
 </div>
-<footer>&copy; SKISIS Corporation - Clémence B, Lucas D, Victoria V</footer>
+<footer>&copy; SKISIS Corporation - ClÃ©mence B, Lucas D, Victoria V</footer>
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   crossorigin="anonymous"></script>
