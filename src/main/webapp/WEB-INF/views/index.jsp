@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 <body class="mainpage">
-<nav class="mainpage"><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="${pageContext.request.contextPath}/app" class="navigation">Accueil</a></div><div><a href="${pageContext.request.contextPath}/app/categories" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <i class="fa fa-user-circle"></i></div></nav>
+<nav class="mainpage"><div class="logo"><img src="assets/ski.png">SKISIS</div><div><a href="${pageContext.request.contextPath}/app" class="navigation">Accueil</a></div><div><a href="${pageContext.request.contextPath}/app/categories" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <a href="${pageContext.request.contextPath}/app/auth"><i class="fa fa-user-circle"></i></a></div></nav>
 <div class="intro">
 	<video autoplay muted loop id="myVideo">
 	  <source src="assets/main_video.mp4" type="video/mp4">

@@ -25,20 +25,29 @@
 			color: #fff;
 			background: #26627c;
 		}
+		a{
+			text-decoration: none;
+		}
 		nav.mainpage{
 			height: 50px;
 			background: transparent;
 		}
-		nav > .logo{
+		.logo{
 			font-family: 'Righteous', cursive;
 			font-size: 30px;
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 		}
-		nav > .logo > img{
+		.logo > img{
 			width: 80px;
 			margin-right: 10px;
+		}
+		.logo.centered{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
 		}
 		nav > div{
 			text-align: center;
@@ -191,11 +200,16 @@
 			display: grid;
 			grid-template-columns: 10% 80% 10%;
 			height: 100px;
+			color:#333;
+			text-decoration: none;
 		}
-		.productLine > div{
+		.productLine > div, .categorieLine > div{
 			display: flex;
 			align-items: center;
 			justify-content: center;
+		}
+		.productLine:hover,.categorieLine:hover{
+			background-color: #ccc;
 		}
 		.light{
 			width: 10px;
@@ -210,6 +224,54 @@
 			display: grid;
 			grid-template-columns: 10% 20% 70%;
 			height: 100px;
-			margin-bottom: 1px solid grey;
+			border-bottom: 1px solid rgba(200,200,200,0.5);
 			text-align: center;
+			color:#333;
+			text-decoration: none;
+		}
+		#loginPage{
+			background: #26627c;
+			padding-top: 5vh;
+		}
+		#loginPage > h1{
+			font-size: 30px;
+			text-align: center;
+			color: #fff;
+			margin-bottom: 10vh;
+		}
+		.loginContainer{
+			width: 40vw;
+			margin: auto;
+			display: flex;
+			justify-content: center;
+			background-color: rgba(255,255,255,0.8);
+			border-radius: 10px;
+			padding: 30px 10px;
+		}
+		.loginContainer > form{
+			text-align: center;
+			width: 50%;
+		}
+		.backToHome{
+			margin-top: 100px;
+			font-size: 30px;
+			text-align: center;
+			color: #fff;
+			text-decoration: none;
+		}
+		.text-input{
+			padding: 10px;
+			border-radius: 5px;
+			border:1px solid gray;
+			width: 100%;
+			font-size: 20px;
+		}
+		.primary-button{
+			font-size: 16px;
+			border-radius: 4px;
+			background-color: #26627c;
+			color: #fff;
+			border:1px solid gray;
+			padding: 10px 15px;
+			cursor: pointer;
 		}
