@@ -1,5 +1,6 @@
 package comptoirs.model.dao;
 
+import java.sql.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -17,7 +18,19 @@ public class StatisticsDao {
 		return results;
 	}
         
-        public List chiffreAffaireCategorieParDate(){
+        public List chiffreAffaireCategorieParDate(Date debut, Date fin){
+            Query query = em.createNamedQuery("Categorie.chiffreAffaire");
+            List results = query.getResultList();
+            return results;
+        }
+        
+        public List chiffreAffairePaysParDate(Date debut, Date fin){
+            Query query = em.createNamedQuery("Categorie.chiffreAffaire");
+            List results = query.getResultList();
+            return results;
+        }
+        
+        public List chiffreAffaireClientParDate(Date debut, Date fin){
             Query query = em.createNamedQuery("Categorie.chiffreAffaire");
             List results = query.getResultList();
             return results;

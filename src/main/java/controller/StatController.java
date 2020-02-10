@@ -6,6 +6,7 @@
 package controller;
 
 import comptoirs.model.dao.StatisticsDao;
+import java.sql.Date;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
@@ -34,7 +35,17 @@ public class StatController {
 	}
         
         @GET
-        public void chiffreAffaireCategorieParDate(){
-            models.put("chiffre d'affaires par artcles", dao.chiffreAffaireCategorieParDate());
+        public void chiffreAffaireCategorieParDate(Date debut, Date fin){
+            models.put("chiffre d'affaires par artcles", dao.chiffreAffaireCategorieParDate(debut, fin));
+        }
+        
+        @GET
+        public void chiffreAffairePaysParDate(Date debut, Date fin){
+            models.put("chiffre d'affaires par pays", dao.chiffreAffairePaysParDate(debut, fin));
+        }
+        
+        @GET
+        public void chiffreAffaireClientParDate(Date debut, Date fin){
+            models.put("chiffre d'affaires par client", dao.chiffreAffaireClientParDate(debut, fin));
         }
 }
