@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Categorie.findByCode", query = "SELECT c FROM Categorie c WHERE c.code = :code"),
 	@NamedQuery(name = "Categorie.findByLibelle", query = "SELECT c FROM Categorie c WHERE c.libelle = :libelle"),
 	@NamedQuery(name = "Categorie.findByDescription", query = "SELECT c FROM Categorie c WHERE c.description = :description"),
-	@NamedQuery(name = "Categorie.unitesVendues", query = "SELECT cat.libelle, SUM(li.quantite) FROM Categorie cat LEFT JOIN cat.produitCollection p LEFT JOIN p.ligneCollection li GROUP BY cat.libelle" )
+	@NamedQuery(name = "Categorie.unitesVendues", query = "SELECT cat.libelle, SUM(li.quantite) FROM Categorie cat LEFT JOIN cat.produitCollection p LEFT JOIN p.ligneCollection li GROUP BY cat.libelle" ),
         @NamedQuery(name = "Categorie.chiffreAffaire", query = "SELECT cat.libelle, SUM(li.quantite*p.prix_unitaire) FROM Categorie cat LEFT JOIN cat.produitCollection p LEFT JOIN p.ligneCollection GROUP BY cat.libelle")}        
 )
 public class Categorie implements Serializable {
