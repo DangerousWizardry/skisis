@@ -19,10 +19,12 @@
 			User<br><br>
 			<input class="text-input" type="text" name="user"><br><br><br>
 			Password<br><br>
-			<input class="text-input" type="password" name="pass"><br><br><br>
+			<input class="text-input" type="password" name="password"><br><br><br>
 			<input class="primary-button" type="submit" name="sub" value="Se connecter">
 		</form>
 	</div>
+	${session}<br>
+	${error}
 	<a href="${pageContext.request.contextPath}/app"><div class="backToHome"><i class="fa fa-chevron-circle-left"></i> Retour à l'accueil</div></a>
 </body>
 </html>

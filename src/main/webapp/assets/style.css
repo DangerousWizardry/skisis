@@ -121,7 +121,7 @@
 		}
 		.container{
 			padding:50px 100px;
-			height: 80vh;
+			min-height: 80vh;
 			background: url("mountain.jpg");
 			background-size: cover;
 			background-position: bottom;

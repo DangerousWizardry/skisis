@@ -46,7 +46,7 @@ public class Client implements Serializable {
 	@Id
         @Basic(optional = false)
         @Column(name = "CODE")
-	private String code;
+	protected String code = null;
 	
 	@Basic(optional = false)
         @Column(name = "SOCIETE")

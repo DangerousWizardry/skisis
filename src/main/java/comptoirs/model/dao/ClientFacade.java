@@ -6,7 +6,9 @@
 package comptoirs.model.dao;
 
 import comptoirs.model.entity.Client;
-import javax.ejb.Stateless;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,11 +16,14 @@ import javax.persistence.PersistenceContext;
  *
  * @author rbastide
  */
-@Stateless
-public class ClientFacade extends AbstractFacade<Client> {
+@SessionScoped
+@Named("Client")
+public class ClientFacade extends AbstractFacade<Client> implements Serializable{
 
 	@PersistenceContext(unitName = "comptoirs")
 	private EntityManager em;
+	
+	private Client loggedUser = null;
 
 	@Override
 	protected EntityManager getEntityManager() {
@@ -29,4 +34,19 @@ public class ClientFacade extends AbstractFacade<Client> {
 		super(Client.class);
 	}
 	
+	public Object getByContact(String contact){
+		return em.createQuery("SELECT c FROM Client c WHERE c.contact = :contactName").setParameter("contactName", contact).getSingleResult();
+	}
+	public boolean isLoggedIn(){
+		return loggedUser != null;
+	}
+	public Client getLoggedUser() {
+		return loggedUser;
+	}
+	public void setLoggedUser(Client loggedUser) {
+		this.loggedUser = loggedUser;
+	}
+	public void logoutUser(){
+		this.loggedUser = null;
+	}
 }
