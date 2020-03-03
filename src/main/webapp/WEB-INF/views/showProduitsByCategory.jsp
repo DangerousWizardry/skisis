@@ -12,8 +12,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 <body>
-	<nav><div class="logo"><img src="../assets/ski.png">SKISIS</div><div><a href="${pageContext.request.contextPath}/app" class="navigation">Accueil</a></div><div><a href="${pageContext.request.contextPath}/app/categories" class="navigation">Catégorie</a></div><div><a href="#" class="navigation">Promotions</a></div><div class="actions"><i class="fa fa-shopping-basket"></i> <a href="${pageContext.request.contextPath}/app/auth"><i class="fa fa-user-circle"></i></a></div></nav>
-
+<%@include file="layout/nav.jsp" %>
 	<h2>Nos produits ${selected.libelle}</h2>
 	<div class="content">
 		<div class="productList">
@@ -21,7 +20,7 @@
 			<div class="productLine">
 				<div>${produit.reference}</div>
 				<div>${produit.nom}</div>
-				<div><form method="POST" action=""><input type="hidden" name="produit" value="${produit.reference}"><label>Quantité </label><input type="number" class="number-input" value="1" name="quantite"><input type="submit" class="primary-button" value="Ajouter au panier"></form></div>
+				<div><c:choose><c:when test="${produit.indisponible eq 1}"><span class="error">Produit Indisponible</span></c:when><c:otherwise><input type="hidden" name="produit" value="${produit.reference}"><label>Quantité </label><input type="number" class="number-input" value="1" name="quantite"><input type="submit" class="primary-button" value="Ajouter au panier"></form></c:otherwise></c:choose></div>
 				<div><div class="light <c:if test="${produit.indisponible eq 1}">red</c:if>"></div></div>
 			</div>
 		</c:forEach>

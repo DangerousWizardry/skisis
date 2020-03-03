@@ -220,6 +220,10 @@
 		.light.red{
 			background-color: #F03;
 		}
+		.error{
+			color: #B00;
+			font-weight: bold;
+		}
 		.categorieLine{
 			display: grid;
 			grid-template-columns: 10% 20% 70%;
