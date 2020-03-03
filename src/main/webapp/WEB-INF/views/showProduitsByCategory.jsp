@@ -21,6 +21,7 @@
 			<div class="productLine">
 				<div>${produit.reference}</div>
 				<div>${produit.nom}</div>
+				<div><form method="POST" action=""><input type="hidden" name="produit" value="${produit.reference}"><label>Quantité </label><input type="number" class="number-input" value="1" name="quantite"><input type="submit" class="primary-button" value="Ajouter au panier"></form></div>
 				<div><div class="light <c:if test="${produit.indisponible eq 1}">red</c:if>"></div></div>
 			</div>
 		</c:forEach>

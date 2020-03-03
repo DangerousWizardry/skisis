@@ -198,7 +198,7 @@
 		}
 		.productLine{
 			display: grid;
-			grid-template-columns: 10% 80% 10%;
+			grid-template-columns: 10% 40% 40% 10%;
 			height: 100px;
 			color:#333;
 			text-decoration: none;
@@ -274,4 +274,12 @@
 			border:1px solid gray;
 			padding: 10px 15px;
 			cursor: pointer;
+		}
+		.number-input{
+			padding: 10px;
+			border-radius: 5px;
+			border:1px solid gray;
+			width: 50px;
+			font-size: 16px;
+			margin: 0 10px;
 		}
