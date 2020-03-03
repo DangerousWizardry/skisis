@@ -15,7 +15,7 @@
 	<video autoplay muted loop id="myVideo">
 	  <source src="assets/main_video.mp4" type="video/mp4">
 	</video>
-	<div class="title"><h1>Bienvenue sur SKISIS<br><small>Votre Magasin de sports d'hiver</small></h1></div>
+	<div class="title"><h1>Bienvenue sur SKISIS<br><small>Votre épicerie de sports d'hiver</small></h1></div>
 </div>
 <div class="container">
 	<div class="separator"><span>Nos produits<span></div>
