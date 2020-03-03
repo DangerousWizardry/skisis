@@ -8,15 +8,22 @@ package controller;
 import comptoirs.model.dao.ClientFacade;
 import comptoirs.model.entity.Client;
 import comptoirs.model.entity.User;
+import java.io.IOException;
+import java.net.URI;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
 import javax.mvc.View;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.Response;
+import service.AuthService;
 
 /**
  *
@@ -37,11 +44,11 @@ public class AuthController {
 	User user;
 	
 	@GET
-	public void show(){
-		System.out.println(user.isLoggedIn());
+	public Response show() throws IOException {
 		if(user.isLoggedIn()){
-			models.put("session", user);
+			return Response.temporaryRedirect(URI.create("/skisis/app/profil")).build();
 		}
+		return Response.ok().build();
 	}
 	 @POST
   public void login(@FormParam("user") String contact,@FormParam("password") String password) {
