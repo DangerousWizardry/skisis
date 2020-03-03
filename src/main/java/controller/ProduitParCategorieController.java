@@ -1,6 +1,7 @@
 package controller;
 
 import comptoirs.model.dao.CategorieFacade;
+import comptoirs.model.dao.ProduitFacade;
 import java.util.List;
 
 
@@ -15,6 +16,9 @@ import javax.ws.rs.QueryParam;
 import comptoirs.model.entity.Categorie;
 import comptoirs.model.entity.Ligne;
 import comptoirs.model.entity.LignePK;
+import comptoirs.model.entity.LignePanier;
+import comptoirs.model.entity.Panier;
+import comptoirs.model.entity.Produit;
 import comptoirs.model.entity.User;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -30,8 +34,14 @@ public class ProduitParCategorieController {
 	@Inject
 	Models models;
         
-    @Inject
-    User user;
+        @Inject
+        User user;
+        
+        @Inject
+        Panier panier;
+        
+        @Inject
+        ProduitFacade produit;
 
 	@GET
 	public void produitsParCategorie( @QueryParam("code") Integer codeCategorie ) {
@@ -48,14 +58,20 @@ public class ProduitParCategorieController {
 			categorieChoisie = touteslesCategories.get(0);
 
 		// On transmet les informations à la vue
-		models.put("categories", touteslesCategories);
 		models.put("selected", categorieChoisie);
                 models.put("user_session", user);
 	}
-        /*
+        
         @POST
-        public void ajouter(@FormParam("Produit") int produit, @FormParam("Quantite")short nombre){
-           panier.addLigne(new Ligne(new LignePK(panier.getNumero(), produit), nombre));
+        public void ajouter(@FormParam("produit") Integer produitNumero, @FormParam("quantite") short nombre){
+            if(panier==null) panier=new Panier();
+            Produit p = produit.findByReference(produitNumero);
+            if(p!=null){
+                if(p.getUnitesEnStock() >= nombre){
+                    panier.addLigne(new LignePanier(p,nombre));
+                }
+            }  
+            models.put("panier", panier);
         }
-*/
+        
 }

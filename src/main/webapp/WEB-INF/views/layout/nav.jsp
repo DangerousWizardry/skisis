@@ -11,6 +11,6 @@
 		<a href="#" class="navigation">Promotions</a>
 	</div>
 	<div class="actions">
-		<i class="fa fa-shopping-basket"></i> <a href="${pageContext.request.contextPath}/app/auth"><i class="fa fa-user-circle"></i></a>
+            <a href="${pageContext.request.contextPath}/app/panier"><i class="fa fa-shopping-basket"></i></a> <a href="${pageContext.request.contextPath}/app/auth"><i class="fa fa-user-circle"></i></a>
 	</div>
 </nav>

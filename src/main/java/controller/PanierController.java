@@ -5,6 +5,8 @@
  */
 package controller;
 
+import comptoirs.model.entity.Ligne;
+import comptoirs.model.entity.Panier;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
@@ -23,9 +25,12 @@ public class PanierController {
 	@Inject
 	Models model;
 	
+        @Inject
+        Panier panier;
+        
 	@GET
 	public void show() {
-		
+            model.put("panier", panier);
 	}
 
 }

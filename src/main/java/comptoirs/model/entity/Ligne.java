@@ -58,7 +58,7 @@ public class Ligne implements Serializable {
 	public Ligne(int commande, int produit) {
 		this.lignePK = new LignePK(commande, produit);
 	}
-
+        
 	public LignePK getLignePK() {
 		return lignePK;
 	}
