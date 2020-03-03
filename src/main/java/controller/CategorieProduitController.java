@@ -13,6 +13,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
 import comptoirs.model.entity.Categorie;
+import comptoirs.model.entity.Ligne;
+import comptoirs.model.entity.LignePK;
+import comptoirs.model.entity.Panier;
+import comptoirs.model.entity.User;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
 
 
 @Controller
@@ -24,6 +30,12 @@ public class CategorieProduitController {
 
 	@Inject
 	Models models;
+        
+        @Inject
+        Panier panier;
+        
+        @Inject
+        User user;
 
 	@GET
 	public void produitsParCategorie( @QueryParam("code") Integer codeCategorie ) {
@@ -42,5 +54,12 @@ public class CategorieProduitController {
 		// On transmet les informations à la vue
 		models.put("categories", touteslesCategories);
 		models.put("selected", categorieChoisie);
+                models.put("user_session", user);
 	}
+        /*
+        @POST
+        public void ajouter(@FormParam("Produit") int produit, @FormParam("Quantite")short nombre){
+           panier.addLigne(new Ligne(new LignePK(panier.getNumero(), produit), nombre));
+        }
+*/
 }
