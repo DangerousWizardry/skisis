@@ -26,7 +26,7 @@ import javax.ws.rs.FormParam;
 @Path("categorieEditor")
 @View("categorieEditor.jsp")
 //@TransactionManagement(TransactionManagementType.BEAN)
-public class CategorieEditorController {
+public class AdminCategorieEditorController {
 
 	@Inject
 	CategorieFacade dao;

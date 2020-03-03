@@ -15,7 +15,6 @@ import javax.ws.rs.QueryParam;
 import comptoirs.model.entity.Categorie;
 import comptoirs.model.entity.Ligne;
 import comptoirs.model.entity.LignePK;
-import comptoirs.model.entity.Panier;
 import comptoirs.model.entity.User;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -23,19 +22,16 @@ import javax.ws.rs.POST;
 
 @Controller
 @Path("categorieProduits")
-@View("categorieProduits.jsp")
-public class CategorieProduitController {
+@View("showProduitsByCategory.jsp")
+public class ProduitParCategorieController {
 	@Inject
 	CategorieFacade facade;
 
 	@Inject
 	Models models;
         
-        @Inject
-        Panier panier;
-        
-        @Inject
-        User user;
+    @Inject
+    User user;
 
 	@GET
 	public void produitsParCategorie( @QueryParam("code") Integer codeCategorie ) {

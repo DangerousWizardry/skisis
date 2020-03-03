@@ -24,7 +24,7 @@ import javax.ws.rs.FormParam;
 @Path("produitEditor")
 @View("produitEditor.jsp")
 //@TransactionManagement(TransactionManagementType.BEAN)
-public class ProduitEditorController {
+public class AdminProduitEditorController {
 
 	@Inject
 	CategorieFacade categorieDao;
