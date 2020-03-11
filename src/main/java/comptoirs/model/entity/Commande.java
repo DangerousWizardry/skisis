@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
 	@NamedQuery(name = "Commande.findAll", query = "SELECT c FROM Commande c"),
+	@NamedQuery(name = "Commande.findFirstDate", query = "SELECT MIN(c.saisieLe) FROM Commande c"),
+	@NamedQuery(name = "Commande.findLastDate", query = "SELECT MAX(c.saisieLe) FROM Commande c"),
 	@NamedQuery(name = "Commande.findByNumero", query = "SELECT c FROM Commande c WHERE c.numero = :numero"),
 	@NamedQuery(name = "Commande.findBySaisieLe", query = "SELECT c FROM Commande c WHERE c.saisieLe = :saisieLe"),
 	@NamedQuery(name = "Commande.findByEnvoyeeLe", query = "SELECT c FROM Commande c WHERE c.envoyeeLe = :envoyeeLe"),
@@ -41,7 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Commande.findByRegionLivraison", query = "SELECT c FROM Commande c WHERE c.regionLivraison = :regionLivraison"),
 	@NamedQuery(name = "Commande.findByCodePostalLivrais", query = "SELECT c FROM Commande c WHERE c.codePostalLivrais = :codePostalLivrais"),
 	@NamedQuery(name = "Commande.findByPaysLivraison", query = "SELECT c FROM Commande c WHERE c.paysLivraison = :paysLivraison"),
-	@NamedQuery(name = "Commande.findByRemise", query = "SELECT c FROM Commande c WHERE c.remise = :remise")})
+	@NamedQuery(name = "Commande.findByRemise", query = "SELECT c FROM Commande c WHERE c.remise = :remise"),
+	@NamedQuery(name = "Commande.CAParPays", query = "SELECT c.paysLivraison, SUM(li.quantite*p.prixUnitaire) FROM Commande c LEFT JOIN c.ligneCollection li WHERE c.saisieLe > :from AND c.saisieLe < :to GROUP BY c.paysLivraison" )})
 public class Commande implements Serializable {
 
 	private static final long serialVersionUID = 1L;

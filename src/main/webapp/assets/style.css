@@ -2,7 +2,7 @@
 			margin: 0;
 			font-family: 'Roboto Condensed', cursive;
 		}
-		body:not(.mainpage,.panier){
+		body:not(.mainpage):not(.panier):not(.admin){
 			background: url("mountain.jpg");
 			background-size: cover;
 			background-position: bottom;
@@ -295,4 +295,52 @@
 			width: 50px;
 			font-size: 16px;
 			margin: 0 10px;
+		}
+		nav.admin{
+			height: 50px;
+			position: fixed;
+			top: 0;
+			background-color: #26a2ac;
+			color: #fff;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+		}
+		nav.admin > div{
+			padding:5px 20px;
+		}
+		nav.admin > div > a {
+			color: #fff;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		.admin-grid{
+			display: flex;
+			flex-direction: row;
+			align-item:flex-start;
+			margin-top: 70px;
+		}
+		.set-option{
+			width:40vw;
+			min-width:400px;
+			display:flex;
+			flex-direction:column;
+			height:200px;
+			background:#ccc;
+			padding:20px 10px;
+		}
+		.date-range-tool{
+			display:flex;
+			flex-direction:column;
+		}
+		.date-picker-group{
+			display: flex;
+			justify-content:space-between;
+			margin-bottom:15px;
+		}
+		#bar-chart-ca{
+			flex: 2 1 500px;
+			min-height:400px;
 		}

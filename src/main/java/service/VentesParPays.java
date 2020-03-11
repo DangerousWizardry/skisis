@@ -11,17 +11,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-@Path("caparcategorie")
-public class VentesParCategorieService {
+@Path("caparpays")
+public class VentesParPays {
 
 	@Inject
 	StatisticsDao dao;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List CAParCategorie(@QueryParam("from") Long timestampFrom,@QueryParam("to") Long timestampTo) {
+	public List CAParPays(@QueryParam("from") Long timestampFrom,@QueryParam("to") Long timestampTo) {
 		if(timestampFrom!=null && timestampTo!=null)
-			return dao.caParCategorie(new Date(timestampFrom), new Date(timestampTo));
-		return dao.caParCategorie();
+			return dao.caParPays(new Date(timestampFrom), new Date(timestampTo));
+		return dao.caParPays();
 	}
 }
