@@ -16,7 +16,14 @@ import javax.inject.Named;
 @SessionScoped
 @Named("Utilisateur")
 public class User extends Client implements Serializable{
+	private boolean isAdmin = false;
 	public boolean isLoggedIn(){
 		return code != null;
+	}
+	public boolean isAdmin(){
+		return isAdmin;
+	}
+	public void setAdminRights(){
+		this.isAdmin = true;
 	}
 }

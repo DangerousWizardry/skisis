@@ -18,7 +18,7 @@ import javax.ws.rs.Path;
  * @author Admin
  */
 
-	@Controller
+@Controller
 @Path("")
 @View("index.jsp")
 public class IndexController {

@@ -35,7 +35,7 @@ public class StatisticsDao {
 		List results = query.getResultList();
 		return results;
 	}	
-		public List caParPays() {
+	public List caParPays() {
 		Query query = em.createNamedQuery("Commande.CAParPays");
 		List results = query.getResultList();
 		return results;
@@ -43,6 +43,19 @@ public class StatisticsDao {
 
 	public List caParPays(Date from,Date to) {
 		Query query = em.createNamedQuery("Commande.CAParPaysParTemps");
+		query = query.setParameter("from", from);
+		query = query.setParameter("to", to);
+		List results = query.getResultList();
+		return results;
+	}	
+	public List caParClient() {
+		Query query = em.createNamedQuery("Commande.CAParClient");
+		List results = query.getResultList();
+		return results;
+	}
+
+	public List caParClient(Date from,Date to) {
+		Query query = em.createNamedQuery("Commande.CAParClientParTemps");
 		query = query.setParameter("from", from);
 		query = query.setParameter("to", to);
 		List results = query.getResultList();

@@ -299,6 +299,7 @@
 		nav.admin{
 			height: 50px;
 			position: fixed;
+			z-index:999;
 			top: 0;
 			background-color: #26a2ac;
 			color: #fff;
@@ -318,9 +319,11 @@
 		}
 		.admin-grid{
 			display: flex;
+			flex-wrap: wrap;
 			flex-direction: row;
 			align-item:flex-start;
 			margin-top: 70px;
+			max-width:100vw;
 		}
 		.set-option{
 			width:40vw;
@@ -341,6 +344,14 @@
 			margin-bottom:15px;
 		}
 		#bar-chart-ca{
+			flex: 2 1 400px;
+			min-height:400px;
+		}
+		#bar-chart-ca-country{
 			flex: 2 1 500px;
 			min-height:400px;
+		}
+		#bar-chart-ca-customer{
+			flex: 2 1 600px;
+			min-height:500px;
 		}

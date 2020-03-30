@@ -10,7 +10,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import comptoirs.model.entity.Categorie;
+import comptoirs.model.entity.User;
 import form.CategorieForm;
+import java.net.URI;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,10 +23,11 @@ import javax.validation.Valid;
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.core.Response;
 
 @Controller
 @Path("categorieEditor")
-@View("categorieEditor.jsp")
+@View("_oldEditCategory.jsp")
 //@TransactionManagement(TransactionManagementType.BEAN)
 public class AdminCategorieEditorController {
 
@@ -34,9 +37,16 @@ public class AdminCategorieEditorController {
 	@Inject
 	Models models;
 
+	@Inject
+	User user;
+	
 	@GET
-	public void show() {
+	public Response show() {
+		if(!user.isLoggedIn() || !user.isAdmin()){
+			return Response.seeOther(URI.create("/skisis/app/auth")).build();
+		}
 		models.put("categories", dao.findAll());
+		return Response.ok().build();
 	}
 
 	@POST

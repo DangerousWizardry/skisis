@@ -10,7 +10,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import comptoirs.model.entity.Produit;
+import comptoirs.model.entity.User;
 import java.math.BigDecimal;
+import java.net.URI;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,10 +21,11 @@ import javax.mvc.View;
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.core.Response;
 
 @Controller
 @Path("produitEditor")
-@View("produitEditor.jsp")
+@View("_oldEditProduct.jsp")
 //@TransactionManagement(TransactionManagementType.BEAN)
 public class AdminProduitEditorController {
 
@@ -34,11 +37,18 @@ public class AdminProduitEditorController {
 	
 	@Inject
 	Models models;
-
+	
+	@Inject
+	User user;
+	
 	@GET
-	public void show() {
+	public Response show() {
+		if(!user.isLoggedIn() || !user.isAdmin()){
+			return Response.seeOther(URI.create("/skisis/app/auth")).build();
+		}
 		models.put("produits", produitDao.findAll());
 		models.put("categories", categorieDao.findAll());
+		return Response.ok().build();
 	}
 
 	@POST

@@ -44,27 +44,39 @@ public class AuthController {
 	
 	@GET
 	public Response show() throws IOException {
-		if(user.isLoggedIn()){
-			return Response.temporaryRedirect(URI.create("/skisis/app/profil")).build();
+		if(user.isLoggedIn() && user.isAdmin()){
+			return Response.seeOther(URI.create("/skisis/app/admin")).build();
+		}
+		else if(user.isLoggedIn()){
+			return Response.seeOther(URI.create("/skisis/app/profil")).build();
 		}
 		return Response.ok().build();
 	}
 	 @POST
-  public void login(@FormParam("user") String contact,@FormParam("password") String password) {
+  public Response login(@FormParam("user") String contact,@FormParam("password") String password) {
 	  try {
-			Client c = (Client) clientDAO.getByContact(contact); 
-			 System.out.println(c.getCode());
+		  if(contact.equals("admin") && password.equals("admin")){
+			  user.setCode("ADMIN");
+			  user.setAdminRights();
+			  return Response.seeOther(URI.create("/skisis/app/admin")).build();
+		  }
+		  else{
+			  Client c = (Client) clientDAO.getByContact(contact); 
 			if(c.getCode().equals(password)){
 				user.setCode(c.getCode());
+				return Response.seeOther(URI.create("/skisis/app/profil")).build();
 			}
 			else{
 				models.put("error", "Mot de passe incorrect");
 			}
 			models.put("session", user);
+		  }
+			return Response.ok().build();
 		 } 
 	  catch (Exception e) {
 		  models.put("error", "Utilisateur Inconnu");
 	  }
+		return Response.ok().build();
 	  
   }
 }

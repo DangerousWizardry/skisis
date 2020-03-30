@@ -29,6 +29,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="${pageContext.request.contextPath}">Retour au menu</a>
+		<a href="${pageContext.request.contextPath}/app/admin">Retour au menu</a>
 	</body>
 </html>

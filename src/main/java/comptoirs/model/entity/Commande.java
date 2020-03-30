@@ -44,7 +44,10 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Commande.findByCodePostalLivrais", query = "SELECT c FROM Commande c WHERE c.codePostalLivrais = :codePostalLivrais"),
 	@NamedQuery(name = "Commande.findByPaysLivraison", query = "SELECT c FROM Commande c WHERE c.paysLivraison = :paysLivraison"),
 	@NamedQuery(name = "Commande.findByRemise", query = "SELECT c FROM Commande c WHERE c.remise = :remise"),
-	@NamedQuery(name = "Commande.CAParPays", query = "SELECT c.paysLivraison, SUM(li.quantite*p.prixUnitaire) FROM Commande c LEFT JOIN c.ligneCollection li WHERE c.saisieLe > :from AND c.saisieLe < :to GROUP BY c.paysLivraison" )})
+	@NamedQuery(name = "Commande.CAParPays", query = "SELECT c.paysLivraison, SUM(li.quantite*p.prixUnitaire) FROM Commande c LEFT JOIN c.ligneCollection li JOIN li.produit1 p GROUP BY c.paysLivraison" ),
+	@NamedQuery(name = "Commande.CAParPaysParTemps", query = "SELECT c.paysLivraison, SUM(li.quantite*p.prixUnitaire) FROM Commande c LEFT JOIN c.ligneCollection li JOIN li.produit1 p WHERE c.saisieLe > :from AND c.saisieLe < :to GROUP BY c.paysLivraison" ),
+	@NamedQuery(name = "Commande.CAParClient", query = "SELECT cli.societe, SUM(li.quantite*p.prixUnitaire) FROM Commande c LEFT JOIN c.ligneCollection li JOIN li.produit1 p JOIN c.client cli GROUP BY cli.societe" ),
+	@NamedQuery(name = "Commande.CAParClientParTemps", query = "SELECT cli.societe, SUM(li.quantite*p.prixUnitaire) FROM Commande c LEFT JOIN c.ligneCollection li JOIN li.produit1 p JOIN c.client cli WHERE c.saisieLe > :from AND c.saisieLe < :to GROUP BY cli.societe" )})
 public class Commande implements Serializable {
 
 	private static final long serialVersionUID = 1L;

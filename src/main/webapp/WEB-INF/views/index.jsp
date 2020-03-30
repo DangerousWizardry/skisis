@@ -5,7 +5,7 @@
 	<title>Skisis</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/style.css">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Righteous|Raleway|Roboto+Condensed&display=swap" rel="stylesheet">
 </head>

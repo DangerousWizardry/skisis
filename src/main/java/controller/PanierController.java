@@ -18,15 +18,15 @@ import javax.ws.rs.Path;
  *
  * @author Admin
  */
-	@Controller
+@Controller
 @Path("/panier")
 @View("panier.jsp")
 public class PanierController {
 	@Inject
 	Models model;
 	
-        @Inject
-        Panier panier;
+	@Inject
+	Panier panier;
         
 	@GET
 	public void show() {
