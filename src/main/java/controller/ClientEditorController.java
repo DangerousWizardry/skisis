@@ -1,11 +1,13 @@
 package controller;
 
 import comptoirs.model.dao.ClientFacade;
+import comptoirs.model.entity.Client;
 import comptoirs.model.entity.User;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
 import javax.mvc.View;
+import javax.persistence.EntityManager;
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.FormParam;
@@ -28,44 +30,45 @@ public class ClientEditorController {
 	@Inject
 	Models models;
         
-        @Inject
+    @Inject
 	User user;
-
+	
 	@GET
 	public void show() {
-		models.put("user", user);
+		Client profile = dao.find(user.getCode());
+		models.put("user", profile);
 	}
         
        @POST
 	@ValidateOnExecution(type = ExecutableType.ALL)
 	public void edit(
-                @FormParam("societe") String societe,
+        @FormParam("societe") String societe,
 		@FormParam("contact") String contact,
 		@FormParam("fonction") String fonction,
-                @FormParam("adresse") String adresse,
-                @FormParam("ville") String ville,
-                @FormParam("region")String region,
-                @FormParam("code_postal") String code_postal,
-                @FormParam("pays") String pays,
-                @FormParam("telephone") String telephone,
-                @FormParam("fax") String fax) {
+		@FormParam("adresse") String adresse,
+		@FormParam("ville") String ville,
+		@FormParam("region")String region,
+		@FormParam("code_postal") String code_postal,
+		@FormParam("pays") String pays,
+		@FormParam("telephone") String telephone,
+		@FormParam("fax") String fax) {
             
 		// Modification des données client
-                
-		user.setSociete(societe);
-                user.setContact(contact);
-		user.setFonction(fonction);
-                user.setAdresse(adresse);
-                user.setVille(ville);
-                user.setRegion(region);
-                user.setCodePostal(code_postal);
-                user.setPays(pays);
-                user.setTelephone(telephone);
-                user.setFax(fax);
-                                
-                dao.edit(user);
+		Client profile = dao.find(user.getCode());
+		profile.setSociete(societe);
+		profile.setContact(contact);
+		profile.setFonction(fonction);
+		profile.setAdresse(adresse);
+		profile.setVille(ville);
+		profile.setRegion(region);
+		profile.setCodePostal(code_postal);
+		profile.setPays(pays);
+		profile.setTelephone(telephone);
+		profile.setFax(fax);
+		
+		dao.edit(profile);
 
-                models.put("user", user);
+		models.put("user", profile);
                                 
 	}
 }

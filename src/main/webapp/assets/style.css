@@ -2,7 +2,7 @@
 			margin: 0;
 			font-family: 'Roboto Condensed', cursive;
 		}
-		body:not(.mainpage):not(.panier):not(.admin){
+		body:not(.mainpage):not(.panier):not(.admin):not(.profile){
 			background: url("mountain.jpg");
 			background-size: cover;
 			background-position: bottom;
@@ -354,4 +354,13 @@
 		#bar-chart-ca-customer{
 			flex: 2 1 600px;
 			min-height:500px;
+		}
+		.profile {
+			text-align:center;
+		}
+		.profile > form > div{
+			display: grid;
+			width:50%;
+			margin: 5px auto;
+			grid-template-columns: 50% 50%;
 		}
