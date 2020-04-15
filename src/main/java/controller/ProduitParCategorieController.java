@@ -68,7 +68,20 @@ public class ProduitParCategorieController {
             Produit p = produit.findByReference(produitNumero);
             if(p!=null){
                 if(p.getUnitesEnStock() >= nombre){
-                    panier.addLigne(new LignePanier(p,nombre));
+                    if (!panier.getLignesPanier().isEmpty() ){
+                        int compteur = 0;
+                        for (LignePanier ligne : panier.getLignesPanier()) {
+                            if (ligne.getProduit().getReference().equals(p.getReference())) {
+                                ligne.setQuantite((short)(ligne.getQuantite() + nombre));
+                                compteur++;
+                            }
+                        }
+                        if (compteur == 0) {
+                            panier.addLigne(new LignePanier(p,nombre));
+                        }
+                    }else{ 
+                        panier.addLigne(new LignePanier(p,nombre));
+                    }
                 }
             }  
             models.put("panier", panier);
