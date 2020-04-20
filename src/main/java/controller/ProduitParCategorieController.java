@@ -63,7 +63,7 @@ public class ProduitParCategorieController {
 	}
         
         @POST
-        public void ajouter(@FormParam("produit") Integer produitNumero, @FormParam("quantite") short nombre){
+        public void ajouter(@QueryParam("code") Integer codeCategorie, @FormParam("produit") Integer produitNumero, @FormParam("quantite") short nombre){
             if(panier==null) panier=new Panier();
             Produit p = produit.findByReference(produitNumero);
             if(p!=null){
@@ -84,6 +84,15 @@ public class ProduitParCategorieController {
                     }
                 }
             }  
+			final List<Categorie> touteslesCategories = facade.findAll();
+
+			Categorie categorieChoisie;
+			if (codeCategorie != null)
+				categorieChoisie = facade.find(codeCategorie);
+			else
+				categorieChoisie = touteslesCategories.get(0);
+			models.put("selected", categorieChoisie);
+			models.put("user_session", user);
             models.put("panier", panier);
         }
         

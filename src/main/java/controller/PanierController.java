@@ -29,7 +29,7 @@ import javax.ws.rs.core.Response;
  * @author Admin
  */
 @Controller
-@Path("/panier")
+@Path("panier")
 @View("panier.jsp")
 public class PanierController {
 	@Inject
@@ -49,36 +49,33 @@ public class PanierController {
             model.put("panier", panier);
 	}
         
-        @POST
-        public void choix(@FormParam("action") String action, @FormParam("produit") Integer produitNumero, @FormParam("quantite") short nombre, @FormParam("produit_delete") Integer produitSupNumero){
-            switch(action) {
-                case "Modifier la quantité":
-                  modifierQte(produitNumero, nombre);
-                  break;
-                case "Supprimer du panier":
-                  supprimerProduit(produitSupNumero);
-                  break;
-                case "Valider le panier":
-                  validerPanier();
-                  break;
-            }
-        }
+	@POST
+	public Response choix(@FormParam("choix") String action, @FormParam("produit") Integer produitNumero, @FormParam("quantite") short nombre, @FormParam("produit_delete") Integer produitSupNumero){
+		switch(action) {
+			case "Modifier la quantité":
+			  return modifierQte(produitNumero, nombre);
+			case "Supprimer du panier":
+			  return supprimerProduit(produitSupNumero);
+			case "Valider le panier":
+			  return validerPanier();
+		}
+		return Response.ok().build();
+	}
         
-        @POST
-        private void modifierQte(Integer produitNumero,short nombre){
+        private Response modifierQte(Integer produitNumero,short nombre){
             Produit p = produit.findByReference(produitNumero);
             if(p.getUnitesEnStock() >= nombre){
                 for (LignePanier ligne : panier.getLignesPanier()) {
                     if (ligne.getProduit().getReference().equals(p.getReference())) {
-                        ligne.setQuantite((short)(ligne.getQuantite() + nombre));
+                        ligne.setQuantite((short)(nombre));
                     }
                 } 
             }
             model.put("panier", panier);
+			return Response.ok().build();
         }
         
-        @POST
-        private void supprimerProduit(Integer produitSupNumero){
+        private Response supprimerProduit(Integer produitSupNumero){
             Produit p = produit.findByReference(produitSupNumero);
             for (LignePanier ligne : panier.getLignesPanier()) {
                 if (ligne.getProduit().getReference().equals(p.getReference())) {
@@ -86,11 +83,11 @@ public class PanierController {
                 }
             }
             model.put("panier", panier);
+			return Response.ok().build();
         }
 
-        @POST
-        private void validerPanier(){
-            Response.seeOther(URI.create("/skisis/app/validPanier")).build();
+        private Response validerPanier(){
+            return Response.seeOther(URI.create("/skisis/app/panier/validation")).build();
         }
         
 }

@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav>
-	<div class="logo"><img src="../assets/ski.png">SKISIS</div>
+	<div class="logo"><img src="/skisis/assets/ski.png">SKISIS</div>
 	<div>
 		<a href="${pageContext.request.contextPath}/app" class="navigation">Accueil</a>
 	</div>

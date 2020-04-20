@@ -15,18 +15,17 @@
 <%@include file="layout/nav.jsp" %>
 	<div class="content">
 		<h1>Votre panier</h1>
-                ${panier}
 		<div class="productList">
 			<c:forEach var="ligne" items="${panier.lignesPanier}">
 			<div class="productLine">
 				<div>${ligne.produit.reference}</div>
 				<div>${ligne.produit.nom}</div>
-				<div><form><input type="hidden" name="produit" value="${ligne.produit.reference}"><input type="hidden" name="produit" value="${ligne.produit.reference}"><label>Quantité </label><input type="number" class="number-input" value="${ligne.quantite}" name="quantite"><input type="submit" class="primary-button" name="choix" value="Modifier la quantité"></form></div>
-				<div><form><input type="hidden" name="produit_delete" value="${ligne.produit.reference}"><input type="submit" class="cancel-button" name="choix" value="Supprimer du panier"></form></div>
+				<div><form method="POST" action=""><input type="hidden" name="action" value="${ligne.produit.reference}"><input type="hidden" name="produit" value="${ligne.produit.reference}"><input type="hidden" name="produit" value="${ligne.produit.reference}"><label>Quantité </label><input type="number" class="number-input" value="${ligne.quantite}" name="quantite"><input type="submit" class="primary-button" name="choix" value="Modifier la quantité"></form></div>
+				<div><form method="POST" action=""><input type="hidden" name="produit_delete" value="${ligne.produit.reference}"><input type="submit" class="cancel-button" name="choix" value="Supprimer du panier"></form></div>
 			</div>
 		</c:forEach>
 		</div>
-		<form><input type="hidden" name="valider" value="1"><input type="submit" class="primary-button" name="choix" value="Valider le panier"></form>
+		<form method="POST" action=""><input type="hidden" name="valider" value="1"><input type="submit" class="primary-button" name="choix" value="Valider le panier"></form>
 	</div>
     </body>
 </html>

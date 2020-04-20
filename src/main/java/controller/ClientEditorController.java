@@ -67,7 +67,7 @@ public class ClientEditorController {
 		profile.setFax(fax);
 		
 		dao.edit(profile);
-
+		profile = dao.find(user.getCode());
 		models.put("user", profile);
                                 
 	}

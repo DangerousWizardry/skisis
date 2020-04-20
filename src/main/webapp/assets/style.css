@@ -404,3 +404,12 @@
 			border:1px solid #26627c;
 			background-color:#ededed;
 		}
+		.validation{
+			padding:20px;
+			text-align:center;
+		}
+		.simple-form{
+			display:grid;
+			padding:20px;
+			grid-template-columns:50% 50%;
+		}
