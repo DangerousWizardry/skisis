@@ -59,7 +59,7 @@ public class PanierValideController {
 	@GET
 	public Response show() throws IOException {
             if (!user.isLoggedIn()) {
-                return Response.seeOther(URI.create("/skisis/app/panier")).build();
+                return Response.seeOther(URI.create("/skisis/app/panier?isNotLoggedIn")).build();
             }
 			Client profile = clientDao.find(user.getCode());
 			models.put("client", profile);

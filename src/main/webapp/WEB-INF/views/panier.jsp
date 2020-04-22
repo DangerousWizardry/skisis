@@ -26,6 +26,7 @@
 		</c:forEach>
 		</div>
 		<form method="POST" action=""><input type="hidden" name="valider" value="1"><input type="submit" class="primary-button" name="choix" value="Valider le panier"></form>
+		<span class="error">${erreur}</span>
 	</div>
     </body>
 </html>

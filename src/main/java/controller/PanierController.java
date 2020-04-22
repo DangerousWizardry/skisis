@@ -22,6 +22,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 /**
@@ -45,8 +46,11 @@ public class PanierController {
         User user;
               
 	@GET
-	public void show() {
-            model.put("panier", panier);
+	public void show(@QueryParam("isNotLoggedIn") String isNotLoggedIn) {
+        String erreur = "";
+		if(isNotLoggedIn!=null) erreur = "Il faut être connecter pour valider votre panier";
+		model.put("erreur", erreur);
+		model.put("panier", panier);
 	}
         
 	@POST

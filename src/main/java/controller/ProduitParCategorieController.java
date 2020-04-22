@@ -72,7 +72,7 @@ public class ProduitParCategorieController {
                         int compteur = 0;
                         for (LignePanier ligne : panier.getLignesPanier()) {
                             if (ligne.getProduit().getReference().equals(p.getReference())) {
-                                ligne.setQuantite((short)(ligne.getQuantite() + nombre));
+                                ligne.setQuantite((short)(ligne.getQuantite() + Math.abs(nombre)));
                                 compteur++;
                             }
                         }

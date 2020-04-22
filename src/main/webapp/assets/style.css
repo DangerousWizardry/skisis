@@ -413,3 +413,6 @@
 			padding:20px;
 			grid-template-columns:50% 50%;
 		}
+		.error{
+			color:red;
+		}
