@@ -89,6 +89,9 @@ public class PanierValideController {
             }
 			commande.setLigneCollection(lignes);
 			commandeDao.edit(commande);
+			client.getCommandeCollection().add(commande);
+			clientDao.edit(client);
+			panier.clear();
 			return Response.seeOther(URI.create("/skisis/app/profil")).build();
         }
       

@@ -48,7 +48,7 @@ public class PanierController {
 	@GET
 	public void show(@QueryParam("isNotLoggedIn") String isNotLoggedIn) {
         String erreur = "";
-		if(isNotLoggedIn!=null) erreur = "Il faut être connecter pour valider votre panier";
+		if(isNotLoggedIn!=null) erreur = "Il faut être connecté pour valider votre panier";
 		model.put("erreur", erreur);
 		model.put("panier", panier);
 	}

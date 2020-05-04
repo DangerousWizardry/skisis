@@ -47,6 +47,10 @@ public class Panier implements Serializable{
     public void setLignesPanier(List<LignePanier> lignesPanier) {
         this.lignesPanier = lignesPanier;
     }
+	
+	public void clear(){
+		this.lignesPanier.clear();
+	}
     
     
 }
