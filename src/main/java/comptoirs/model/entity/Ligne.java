@@ -5,6 +5,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -40,7 +41,7 @@ public class Ligne implements Serializable {
 	private Commande commande1;
 
 	@JoinColumn(name = "PRODUIT", referencedColumnName = "REFERENCE", insertable = false, updatable = false)
-        @ManyToOne(optional = false)
+        @ManyToOne(optional = false,fetch = FetchType.EAGER)
 	private Produit produit1;
 
 	public Ligne() {

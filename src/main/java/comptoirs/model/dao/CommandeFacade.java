@@ -6,6 +6,9 @@
 package comptoirs.model.dao;
 
 import comptoirs.model.entity.Commande;
+import comptoirs.model.entity.Produit;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +30,15 @@ public class CommandeFacade extends AbstractFacade<Commande> {
 
 	public CommandeFacade() {
 		super(Commande.class);
+	}
+	
+	public List<Commande> findByClientCode(String code){
+		//Force clear the cache in order to get up-to-date value
+		em.getEntityManagerFactory().getCache().evictAll();
+		  List<Commande> liste = em.createNamedQuery("Commande.findByClient").setParameter("code", code).getResultList();
+            if(!liste.isEmpty())
+                return liste;
+            return null;
 	}
 	
 }

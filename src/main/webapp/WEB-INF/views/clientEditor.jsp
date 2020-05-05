@@ -29,7 +29,7 @@
 	</form>
 		<h2>Mes commandes</h2>
 		<div class="orders">
-			<c:forEach var="commande" items="${user.commandeCollection}">
+			<c:forEach var="commande" items="${commandes}">
 				<div class="order-container">
 				<div class="order"><b>N°${commande.numero}</b><b>Le <fmt:formatDate value="${commande.saisieLe}" pattern="dd/MM/yyyy à HH:mm:ss" /></b><b>Nombre de référence : ${commande.ligneCollection.size()}</b><i id="${commande.numero}" class="fa fa-2x fa-plus-circle"></i></div>
 				<div class="product header order-${commande.numero}"><b>Référence</b><b>Nom du produit</b><b>Prix Unitaire</b><b>Quantité</b><b>Total</b></div>

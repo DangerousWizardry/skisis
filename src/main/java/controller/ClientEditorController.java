@@ -1,8 +1,10 @@
 package controller;
 
 import comptoirs.model.dao.ClientFacade;
+import comptoirs.model.dao.CommandeFacade;
 import comptoirs.model.entity.Client;
 import comptoirs.model.entity.User;
+import java.net.URI;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
@@ -15,6 +17,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
 /**
  *
  * @author clemence
@@ -24,8 +27,11 @@ import javax.ws.rs.QueryParam;
 @View("clientEditor.jsp")
 public class ClientEditorController {
  
-        @Inject
+    @Inject
 	ClientFacade dao;
+	
+	@Inject
+	CommandeFacade commandeDao;
 
 	@Inject
 	Models models;
@@ -34,9 +40,14 @@ public class ClientEditorController {
 	User user;
 	
 	@GET
-	public void show() {
+	public Response show() {
+		if(!user.isLoggedIn()){
+			return Response.seeOther(URI.create("/skisis/app/auth")).build();
+		}
 		Client profile = dao.find(user.getCode());
 		models.put("user", profile);
+		models.put("commandes", commandeDao.findByClientCode(user.getCode()));
+		return Response.ok().build();
 	}
         
        @POST
@@ -69,6 +80,6 @@ public class ClientEditorController {
 		dao.edit(profile);
 		profile = dao.find(user.getCode());
 		models.put("user", profile);
-                                
+        models.put("commandes", commandeDao.findByClientCode(user.getCode()));
 	}
 }

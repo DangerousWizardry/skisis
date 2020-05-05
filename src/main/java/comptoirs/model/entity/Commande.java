@@ -8,6 +8,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Commande.findAll", query = "SELECT c FROM Commande c"),
 	@NamedQuery(name = "Commande.findFirstDate", query = "SELECT MIN(c.saisieLe) FROM Commande c"),
 	@NamedQuery(name = "Commande.findLastDate", query = "SELECT MAX(c.saisieLe) FROM Commande c"),
+	@NamedQuery(name = "Commande.findByClient", query = "SELECT c FROM Commande c LEFT JOIN c.client cli WHERE cli.code = :code"),
 	@NamedQuery(name = "Commande.findByNumero", query = "SELECT c FROM Commande c WHERE c.numero = :numero"),
 	@NamedQuery(name = "Commande.findBySaisieLe", query = "SELECT c FROM Commande c WHERE c.saisieLe = :saisieLe"),
 	@NamedQuery(name = "Commande.findByEnvoyeeLe", query = "SELECT c FROM Commande c WHERE c.envoyeeLe = :envoyeeLe"),
@@ -93,7 +95,7 @@ public class Commande implements Serializable {
         @Column(name = "REMISE")
 	private BigDecimal remise;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "commande1")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "commande1",fetch = FetchType.EAGER)
 	private Collection<Ligne> ligneCollection;
 
 	@JoinColumn(name = "CLIENT", referencedColumnName = "CODE")
